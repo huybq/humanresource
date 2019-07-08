@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Api\UsersRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Model\Users;
+use JWTAuth;
+use JWTAuthException;
+use Hash;
 
 class UsersController extends Controller
 {
@@ -44,8 +46,14 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $user = $this->usersRepository->create($request->all());
-        return response()->json($user, Response::HTTP_CREATED);
+        $newUser = [
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => Hash::make($request->get('password'))
+        ];
+          
+        $user_inserted = $this->usersRepository->create($newUser);
+        return response()->json($user_inserted, Response::HTTP_CREATED);
     }
 
     /**
@@ -98,5 +106,22 @@ class UsersController extends Controller
     public function search(Request $request)
     {
         return $this->usersRepository->search($request);
+    }
+
+    /**
+     * Check validate and generate token
+     */
+    public function login(Request $request){
+        $credentials = $request->only('email', 'password');
+        
+        $token = null;
+        try {
+           if (!$token = JWTAuth::attempt($credentials)) {
+            return response()->json(['invalid_email_or_password'], 422);
+           }
+        } catch (JWTAuthException $e) {
+            return response()->json(['failed_to_create_token'], 500);
+        }
+        return response()->json(compact('token'));
     }
 }

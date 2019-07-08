@@ -17,10 +17,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('address', 'Api\AddressController@index');
-Route::get('address/search', 'Api\AddressController@search');
+//Route::post('auth/login', 'Api\UsersController@login');
 
-Route::get('users/search', 'Api\UsersController@search');
-Route::resource('users', 'Api\UsersController');
+Route::group(['middleware' => 'jwt.auth'], function () {
+    // User
+    Route::get('users/search', 'Api\UsersController@search');
+    Route::resource('users', 'Api\UsersController');
+
+    // Address
+    Route::get('address', 'Api\AddressController@index');
+    Route::get('address/search', 'Api\AddressController@search');
+});
 
 
