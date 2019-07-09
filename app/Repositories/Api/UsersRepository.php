@@ -27,7 +27,7 @@ class UsersRepository extends BaseRepository implements UsersRepositoryInterface
         $page = $request->query('p');
         $query = DB::table('users as us')
                     ->select('us.id', 'us.name', 'us.email', 'add.city', 'add.district')
-                    ->leftJoin('address as add', function($join) {
+                    ->leftJoin('mst_address as add', function($join) {
                         $join->on('us.id', '=', 'add.id');
                              //-> where('add.id', 1);
                     });

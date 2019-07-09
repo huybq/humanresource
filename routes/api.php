@@ -24,9 +24,17 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('users/search', 'Api\UsersController@search');
     Route::resource('users', 'Api\UsersController');
 
-    // Address
-    Route::get('address', 'Api\AddressController@index');
-    Route::get('address/search', 'Api\AddressController@search');
+    Route::resource('address', 'Api\MstAddressController');
+
+    Route::resource('business', 'Api\MstBusinessController');
+
+    Route::resource('career', 'Api\MstCareerController');
+
+    Route::resource('company', 'Api\MstCompanyController');
+
+    Route::resource('employment', 'Api\MstEmploymentController');
+    
+    Route::resource('level', 'Api\MstLevelController');
 });
 
 

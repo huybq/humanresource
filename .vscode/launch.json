@@ -16,7 +16,9 @@
             "type": "php",
             "request": "launch",
             "program": "${file}",
-            "cwd": "${fileDirname}"
+            "cwd": "${fileDirname}",
+            "port":9000,
+            "runtimeExecutable":"D:\\Xampp\\php\\php.exe"
         }
     ]
 }

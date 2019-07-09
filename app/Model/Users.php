@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Users extends Authenticatable
 {
-    //
+    // Table name
     protected $table = 'users';
 
     use Notifiable;

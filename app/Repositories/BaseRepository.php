@@ -99,4 +99,3 @@ abstract class BaseRepository implements RepositoryInterface {
         return false;
     }
 }
-

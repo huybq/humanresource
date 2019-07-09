@@ -39,4 +39,3 @@ interface RepositoryInterface
      */
     public function delete($id);
 }
-?>

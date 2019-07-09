@@ -4,8 +4,8 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Address extends Model
+class Job extends Model
 {
-    //
-    protected $table = "address";
+    // Table name
+    protected $table = 'job';
 }
