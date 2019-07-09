@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Repositories\Api\UsersRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Http\Controllers\Controller;
+use App\Repositories\Api\UsersRepositoryInterface;
 use JWTAuth;
 use JWTAuthException;
 use Hash;
@@ -35,7 +35,7 @@ class UsersController extends Controller
     {
         $users = $this->usersRepository->getAll();
         return response()->json($users);
-        //return view('welcome', compact('users', 'address'));
+        //return view('welcome', compact('users'));
     }
 
     /**
@@ -93,10 +93,10 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $result = $this->usersRepository->delete($id);
-        if (!$result) {
+        if (is_null($result)) {
             return response()->json(Response::$statusTexts[Response::HTTP_NOT_FOUND], Response::HTTP_NOT_FOUND);
         }
-        return $result;
+        return response()->json(['result'=>'Deleted'], Response::HTTP_OK);
     }
 
     /**

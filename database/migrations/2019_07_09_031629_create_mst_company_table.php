@@ -20,7 +20,7 @@ class CreateMstCompanyTable extends Migration
             $table->string('logo');
             $table->string('email');
             $table->string('phone');
-            $table->multiLineString('address');
+            $table->longText('address');
             $table->string('address_address')->nullable();
             $table->double('address_latitude')->nullable();
             $table->double('address_longitude')->nullable();

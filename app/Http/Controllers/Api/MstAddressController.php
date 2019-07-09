@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Model\MstAddress;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Http\Controllers\Controller;
 use App\Repositories\Api\MstAddressRepository;
 
 class MstAddressController extends Controller
@@ -83,9 +82,9 @@ class MstAddressController extends Controller
     public function destroy($id)
     {
         $result = $this->repository->delete($id);
-        if (!$result) {
+        if (is_null($result)) {
             return response()->json(Response::$statusTexts[Response::HTTP_NOT_FOUND], Response::HTTP_NOT_FOUND);
         }
-        return $result;
+        return response()->json(['result'=>'Deleted'], Response::HTTP_OK);
     }
 }

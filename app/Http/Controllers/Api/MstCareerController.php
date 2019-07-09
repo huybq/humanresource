@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Repositories\Api\MstCareerRepository;
 
@@ -81,9 +82,9 @@ class MstCareerController extends Controller
     public function destroy($id)
     {
         $result = $this->repository->delete($id);
-        if (!$result) {
+        if (is_null($result)) {
             return response()->json(Response::$statusTexts[Response::HTTP_NOT_FOUND], Response::HTTP_NOT_FOUND);
         }
-        return $result;
+        return response()->json(['result'=>'Deleted'], Response::HTTP_OK);
     }
 }

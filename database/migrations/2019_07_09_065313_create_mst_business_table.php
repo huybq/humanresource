@@ -15,7 +15,7 @@ class CreateMstBusinessTable extends Migration
     {
         Schema::create('mst_business', function (Blueprint $table) {
             $table->increments('id');
-            $table->int('parentid');
+            $table->integer('parentid');
             $table->string('name');
             $table->string('slug');
             $table->timestamps();

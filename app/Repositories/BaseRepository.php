@@ -78,7 +78,7 @@ abstract class BaseRepository implements RepositoryInterface {
             return $result;
         }
 
-        return false;
+        return $result;
     }
 
     /**
@@ -92,10 +92,8 @@ abstract class BaseRepository implements RepositoryInterface {
         $result = $this->find($id);
         if ($result) {
             $result->delete();
-
-            return true;
         }
 
-        return false;
+        return $result;
     }
 }

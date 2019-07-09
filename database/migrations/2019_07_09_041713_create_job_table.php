@@ -15,10 +15,10 @@ class CreateJobTable extends Migration
     {
         Schema::create('job', function (Blueprint $table) {
             $table->increments('id');
-            $table->int('companyid');
-            $table->int('careerid');
-            $table->int('employmentid');
-            $table->int('businessid');
+            $table->integer('companyid');
+            $table->integer('careerid');
+            $table->integer('employmentid');
+            $table->integer('businessid');
             $table->string('addressid');
             $table->date('deadline');
             $table->longText('content');

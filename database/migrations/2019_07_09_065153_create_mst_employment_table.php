@@ -15,7 +15,7 @@ class CreateMstEmploymentTable extends Migration
     {
         Schema::create('mst_employment', function (Blueprint $table) {
             $table->increments('id');
-            $table->int('parentid');
+            $table->integer('parentid');
             $table->string('name');
             $table->string('slug');
             $table->timestamps();
