@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Web;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Api\UsersRepository;
 use App\Repositories\Api\MstAddressRepository;
@@ -12,19 +11,24 @@ use App\Repositories\Api\MstCompanyRepository;
 use App\Repositories\Api\MstEmploymentRepository;
 use App\Repositories\Api\MstLevelRepository;
 
-class AdminPageController extends Controller
+class HomeController extends Controller
 {
     /**
      * UsersRepository
      */
     protected $usersRepository;
-    protected $addressRepository;   
-    protected $businessRepository;   
-    protected $careerRepository;   
-    protected $companyRepository;   
-    protected $employmentRepository;   
-    protected $levelRepository;   
-
+    protected $addressRepository;
+    protected $businessRepository;
+    protected $careerRepository;
+    protected $companyRepository;
+    protected $employmentRepository;
+    protected $levelRepository; 
+    
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct(UsersRepository $usersRepository, 
                                 MstAddressRepository $addressRepository, 
                                 MstBusinessRepository $businessRepository, 
@@ -33,6 +37,7 @@ class AdminPageController extends Controller
                                 MstEmploymentRepository $employmentRepository, 
                                 MstLevelRepository $levelRepository)
     {
+        $this->middleware('auth');
         $this->usersRepository = $usersRepository;
         $this->addressRepository = $addressRepository;
         $this->businessRepository = $businessRepository;
@@ -41,15 +46,16 @@ class AdminPageController extends Controller
         $this->employmentRepository = $employmentRepository;
         $this->levelRepository = $levelRepository;
     }
-
+    
     /**
-     * Display a listing of the resource.
+     * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $users = $this->usersRepository->getAll();
         return view('admin/index', compact('users'));
+//         return view('home');
     }
 }

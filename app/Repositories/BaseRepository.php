@@ -1,9 +1,6 @@
 <?php
 namespace App\Repositories;
 
-use App\Repositories\RepositoryInterface;
-use App\Model\Users;
-
 abstract class BaseRepository implements RepositoryInterface {
     /**
      * @var \Illuminate\Database\Eloquent\Model

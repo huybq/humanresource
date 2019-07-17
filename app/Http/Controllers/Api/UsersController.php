@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Repositories\Api\UsersRepositoryInterface;
-use JWTAuth;
-use JWTAuthException;
-use Hash;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Facades\JWTAuth;
+
 
 class UsersController extends Controller
 {
@@ -119,7 +120,7 @@ class UsersController extends Controller
            if (!$token = JWTAuth::attempt($credentials)) {
             return response()->json(['invalid_email_or_password'], 422);
            }
-        } catch (JWTAuthException $e) {
+        } catch (JWTException $e) {
             return response()->json(['failed_to_create_token'], 500);
         }
         return response()->json(compact('token'));
