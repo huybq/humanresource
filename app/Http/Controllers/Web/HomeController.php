@@ -37,6 +37,7 @@ class HomeController extends Controller
                                 MstEmploymentRepository $employmentRepository, 
                                 MstLevelRepository $levelRepository)
     {
+        // Add comment for master 1
         $this->middleware('auth');
         $this->usersRepository = $usersRepository;
         $this->addressRepository = $addressRepository;
