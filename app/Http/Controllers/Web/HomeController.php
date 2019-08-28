@@ -38,6 +38,7 @@ class HomeController extends Controller
                                 MstLevelRepository $levelRepository)
     {
         // Add comment for master 1
+        // Add comment for master 2
         $this->middleware('auth');
         $this->usersRepository = $usersRepository;
         $this->addressRepository = $addressRepository;
