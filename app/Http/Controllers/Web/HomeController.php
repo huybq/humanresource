@@ -56,6 +56,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // add comment for test 1
         $users = $this->usersRepository->getAll();
         return view('admin/index', compact('users'));
 //         return view('home');
