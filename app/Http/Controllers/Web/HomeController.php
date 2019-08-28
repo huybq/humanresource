@@ -39,6 +39,9 @@ class HomeController extends Controller
     {
         // Add comment for master 1
         // Add comment for master 2
+        // Add comment for master 3
+        // Add comment for master 4
+        // Add comment for master 5
         $this->middleware('auth');
         $this->usersRepository = $usersRepository;
         $this->addressRepository = $addressRepository;
@@ -47,6 +50,11 @@ class HomeController extends Controller
         $this->companyRepository = $companyRepository;
         $this->employmentRepository = $employmentRepository;
         $this->levelRepository = $levelRepository;
+        // Add comment for branch test2_1
+        // Add comment for branch test2_2
+        // Add comment for branch test2_3
+        // Add comment for branch test2_4
+        // Add comment for branch test2_5
     }
     
     /**
@@ -56,6 +64,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // add comment for test 1
+        // add comment for test 2
+        // add comment for test 3
+        // add comment for test 4
         $users = $this->usersRepository->getAll();
         return view('admin/index', compact('users'));
 //         return view('home');
