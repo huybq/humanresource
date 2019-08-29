@@ -47,6 +47,7 @@ class HomeController extends Controller
         $this->companyRepository = $companyRepository;
         $this->employmentRepository = $employmentRepository;
         $this->levelRepository = $levelRepository;
+        // Add comment for branch test2_1
     }
     
     /**
