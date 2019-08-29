@@ -40,6 +40,7 @@ class HomeController extends Controller
         // Add comment for master 1
         // Add comment for master 2
         // Add comment for master 3
+        // Add comment for master 4
         $this->middleware('auth');
         $this->usersRepository = $usersRepository;
         $this->addressRepository = $addressRepository;
